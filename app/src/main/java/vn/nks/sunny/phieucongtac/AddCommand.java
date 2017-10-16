@@ -3,6 +3,7 @@ package vn.nks.sunny.phieucongtac;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -35,6 +37,7 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
     EditText edtnoicongtac,  edtnoidung, edtdonvi, edtdieukien,edtphuongtien, edtdungcu,txtgichu,txtpos,txtstatus ,edtcurrent ,edtsophieu;
     TextView txttungay,txtdenngay,txtracong,txtch,txtgs,txtct ,txtnd,txtdv,txtdk;
     List<User> users;
+    Button btnaddmember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +68,7 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
         edtdieukien = findViewById(R.id.edtdieukien);
         edtdungcu = findViewById(R.id.edtdungcu);
         edtphuongtien = findViewById(R.id.edtphuongtien);
-
+        btnaddmember=findViewById(R.id.btnaddmember);
         txttungay=findViewById(R.id.txttungay);
         txtdenngay=findViewById(R.id.txtdenngay);
         txtracong=findViewById(R.id.txtracong);
@@ -75,7 +78,14 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
         users=new ArrayList<>();
     }
     private void AddEvent() {
-
+        btnaddmember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AddCommand.this,Add_Employ.class);
+                intent.putExtra("sophieu",edtsophieu.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         edtdonvi.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
