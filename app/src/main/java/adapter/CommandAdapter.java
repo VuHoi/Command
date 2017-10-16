@@ -1,12 +1,14 @@
 package adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class CommandAdapter extends ArrayAdapter<Command>
     Activity context;
     int resource;
     List<Command> objects;
-    CheckBox ckbdelete;
+
     public CommandAdapter(Activity context, int resource, List<Command> objects) {
         super(context, resource, objects);
         this.context=context;
@@ -40,12 +42,19 @@ public class CommandAdapter extends ArrayAdapter<Command>
         TextView txtTengs=row.findViewById(R.id.txtTengs);
         TextView txtTennd=row.findViewById(R.id.txtTennd);
         TextView txtdv=row.findViewById(R.id.txtTendv);
+        RelativeLayout rl=row.findViewById(R.id.rl);
         Command command=this.objects.get(position);
-        txtID.setText(command.getSoPhieu());
-        txtTench.setText(command.getChiHuyTrucTiep());
-        txtTengs.setText(command.getGiamSatAnToan());
-        txtTennd.setText(command.getNoiCongTac());
-        txtdv.setText(command.getDonViYeuCau());
+        if(command.getStatus().toString().equals("APPROVAL"))
+        {
+            rl.setBackgroundColor(Color.parseColor("#43A047"));
+        }
+
+            txtID.setText(command.getSoPhieu());
+            txtTench.setText(command.getChiHuyTrucTiep());
+            txtTengs.setText(command.getGiamSatAnToan());
+            txtTennd.setText(command.getNoiCongTac());
+            txtdv.setText(command.getDonViYeuCau());
+
         return  row;
     }
 }

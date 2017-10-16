@@ -154,12 +154,13 @@ public class Command {
 
     String SoPhieu;
 
-    public Command(String soPhieu, String chiHuyTrucTiep, String giamSatAnToan, String noiCongTac,String donViYeuCau) {
+    public Command(String soPhieu, String chiHuyTrucTiep, String giamSatAnToan, String noiCongTac,String donViYeuCau,String status) {
         SoPhieu = soPhieu;
         ChiHuyTrucTiep = chiHuyTrucTiep;
         GiamSatAnToan = giamSatAnToan;
         NoiCongTac = noiCongTac;
         DonViYeuCau=donViYeuCau;
+        this.status=status;
     }
 
     String Ngay;
