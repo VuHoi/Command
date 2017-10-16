@@ -28,14 +28,15 @@ public class WorkActivity extends AppCompatActivity {
     SQLiteDatabase database;
     List<Command> commands;
     CommandAdapter  adapter;
+    Boolean permistion=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work);
         lsvcongtac=findViewById(R.id.lsvcongtac);
         setTitle("Phiếu công tác");
+        permistion=getIntent().getBooleanExtra("permission",true);
 
-        Toast.makeText(this, getIntent().getBooleanExtra("permission",false)+" ", Toast.LENGTH_SHORT).show();
         myDatabase = new MyDatabaseAdapter(this);
         myDatabase.Khoitai();
         database = myDatabase.getMyDatabase();
@@ -43,6 +44,12 @@ public class WorkActivity extends AppCompatActivity {
         commands=new ArrayList<>();
         adapter=new CommandAdapter(this,R.layout.itemcommand,commands);
         lsvcongtac.setAdapter(adapter);
+
+        if(permistion)
+        {
+            fab.setVisibility(View.VISIBLE);
+        }
+        else { fab.setVisibility(View.GONE); }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +61,7 @@ public class WorkActivity extends AppCompatActivity {
         cursor.moveToFirst();
         while (!cursor.isAfterLast())
         {
-         Command  command=new Command(cursor.getString(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(6));
+         Command  command=new Command(cursor.getString(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(6),cursor.getString(15));
          commands.add(command);
             cursor.moveToNext();
         }

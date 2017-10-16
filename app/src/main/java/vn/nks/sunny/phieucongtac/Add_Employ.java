@@ -51,7 +51,7 @@ public class Add_Employ extends AppCompatActivity {
  
                 final ArrayList<String> listEm=new ArrayList<>();
  
-                ArrayList<String> listEm=new ArrayList<>();
+
  
                 ArrayList<String> listPos=new ArrayList<>();
 
