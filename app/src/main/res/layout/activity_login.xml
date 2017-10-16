@@ -24,17 +24,20 @@
         android:textSize="17dp"
         android:id="@+id/edtuser"
         android:layout_height="wrap_content" />
+
     <EditText
-        android:textSize="17dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/edtpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/edtuser"
-    android:layout_width="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
         android:hint="Enter Password"
         android:paddingLeft="10dp"
-        android:id="@+id/edtpass"
-    android:layout_height="wrap_content" />
+        android:singleLine="true"
+        android:textSize="17dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
