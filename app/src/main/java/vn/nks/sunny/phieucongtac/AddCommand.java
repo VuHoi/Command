@@ -2,10 +2,14 @@ package vn.nks.sunny.phieucongtac;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -13,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,7 +32,7 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
     SQLiteDatabase database;
     AutoCompleteTextView txtchihuy, txtgiamsat ;
     int mYear,mMonth,mDay,fyear,fmonth,fday, hour,minute,fhour,fminute;
-    EditText edtnoicongtac,  edtnoidung, edtdonvi, edtdieukien, edtdungcu, edtphuongtien ;
+    EditText edtnoicongtac,  edtnoidung, edtdonvi, edtdieukien,edtphuongtien, edtdungcu,txtgichu,txtpos,txtstatus ,edtcurrent ,edtsophieu;
     TextView txttungay,txtdenngay,txtracong,txtch,txtgs,txtct ,txtnd,txtdv,txtdk;
     List<User> users;
     @Override
@@ -40,9 +45,13 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
 
     }
     private void AddControl() {
+        txtstatus=findViewById(R.id.txtstatus);
+        txtgichu=findViewById(R.id.txtgichu);
+        txtpos=findViewById(R.id.txtpos);
         txtch=findViewById(R.id.txtch);
         txtgs=findViewById(R.id.txtgs);
         txtct=findViewById(R.id.txtct);
+        edtsophieu=findViewById(R.id.edtsophieu);
 
         txtdk=findViewById(R.id.txtdk);
         txtnd=findViewById(R.id.txtnd);
@@ -239,6 +248,7 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
 
         while (!cursor.isAfterLast())
         {
+            Log.d("aaa",cursor.getString(1));
             users.add(new User(cursor.getString(1).toString(),cursor.getString(3).toString(),cursor.getString(4).toString()));
             cursor.moveToNext();
         }
@@ -276,4 +286,50 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
         txtracong.setText(fyear + "-" + fmonth + "-" + fday + " " + fhour + ":" + fminute);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.done_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.btnDone)
+        {
+            ContentValues values=new ContentValues();
+
+            //Insert Congtac
+
+
+            values.put("SoPhieu ", edtsophieu.getText().toString());
+            Cursor cursor = database.rawQuery("select  id from User where Username =?", new String[]{txtchihuy.getText().toString()});
+            cursor.moveToFirst();
+            Calendar calendar=Calendar.getInstance();
+            values.put("Ngay",calendar.get(Calendar.YEAR)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.DATE));
+            values.put("ChiHuyTrucTiep ", Integer.parseInt(cursor.getString(0)));
+
+            Cursor cursor1 = database.rawQuery("select  id from User  where Username =?", new String[]{txtgiamsat.getText().toString()});
+            cursor1.moveToFirst();
+            values.put("GiamSatAnToan ", Integer.parseInt(cursor1.getString(0)));
+            values.put("NoiCongTac", edtnoicongtac.getText().toString());
+            values.put("NoiDungCongTac ", edtnoidung.getText().toString());
+            values.put("DonViYeuCau", edtdonvi.getText().toString());
+            values.put("DieuKien", edtdieukien.getText().toString());
+            values.put("NgayBatDau", txttungay.getText().toString());
+            values.put("NgayKetThuc", txtdenngay.getText().toString());
+            values.put("DungCu", edtdungcu.getText().toString());
+            Cursor cursor2 = database.rawQuery("select  id from PhuongTien  where Title =?", new String[]{edtphuongtien.getText().toString()});
+cursor2.moveToFirst();
+
+            values.put("PhuongTienId ", cursor2.getString(0));
+            values.put("GhiChu", txtgichu.getText().toString());
+            values.put("pos", txtpos.getText().toString());
+            values.put("status", txtstatus.getText().toString());
+            values.put("RaCong", txtracong.getText().toString());
+
+
+            database.insertWithOnConflict("PHIEUCONGTAC", null, values, SQLiteDatabase.CONFLICT_FAIL);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

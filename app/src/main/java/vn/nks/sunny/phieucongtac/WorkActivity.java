@@ -1,5 +1,6 @@
 package vn.nks.sunny.phieucongtac;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,7 +44,8 @@ public class WorkActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(WorkActivity.this, "haha", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(WorkActivity.this,AddCommand.class);
+                startActivity(intent);
             }
         });
         Cursor cursor = database.rawQuery("SELECT * FROM PHIEUCONGTAC ORDER BY POS AND STATUS='APPROVAL | PENDING'", null);
@@ -54,6 +57,14 @@ public class WorkActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
 adapter.notifyDataSetChanged();
+
+
+        lsvcongtac.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
     }
 
     @Override

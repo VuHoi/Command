@@ -21,15 +21,34 @@
             android:layout_marginTop="10dp"
             android:id="@+id/txt1"
             android:textColor="#030303"/>
+        <EditText
+            android:id="@+id/edtsophieu"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Số phiếu"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="20dp"
+            android:textColor="#050505"
+            />
+
         <LinearLayout
             android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/border_textview"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
             <TextView
                 android:id="@+id/txtch"
                 android:text="*Chỉ huy*"
@@ -299,7 +318,58 @@
             android:layout_marginTop="10dp"
             android:textColor="#050505"
             />
+        <EditText
+            android:id="@+id/txtgichu"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Ghi chú"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
 
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
+        <EditText
+            android:id="@+id/txtpos"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Pos"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
+        <EditText
+            android:id="@+id/txtstatus"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Trạng thái"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
         <TextView
             android:id="@+id/txtracong"
             android:layout_width="wrap_content"
@@ -318,6 +388,7 @@
             android:layout_marginTop="10dp"
             android:textColor="#050505"
             />
+
     </LinearLayout>
 
 </ScrollView>
