@@ -55,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         Intent intent=new Intent(LoginActivity.this,WorkActivity.class);
                         if(idt.equals("admin") || idt.equals("user"))
-                            intent.putExtra("permission",true);
-                        else   intent.putExtra("permission",false);
+                            intent.putExtra("permission",true); //Gửi permission
+                        else   intent.putExtra("permission",false);  //Gửi permission
                         startActivity(intent);
                         return;
                     }

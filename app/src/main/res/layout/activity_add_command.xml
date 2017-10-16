@@ -370,25 +370,47 @@
             android:layout_marginTop="10dp"
             android:textColor="#050505"
             />
+        <RelativeLayout
+            android:layout_marginLeft="20dp"
+
+            android:layout_marginRight="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:id="@+id/txtracong"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="40dp"
             android:hint="Giờ ra cổng"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp"
+
             android:background="@drawable/border_textview"
             android:textSize="17dp"
             android:gravity="center"
-            android:layout_gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:layout_marginRight="20dp"
+
+
+           android:layout_alignParentLeft="true"
             android:textColorHint="#9c9999"
             android:layout_marginTop="10dp"
             android:textColor="#050505"
             />
+        <Button
+            android:id="@+id/btnaddmember"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
 
+            android:textStyle="bold"
+         android:layout_alignParentRight="true"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+            android:gravity="center"
+android:text="Thêm thành viên"
+
+
+            android:layout_marginTop="10dp"
+            android:textColor="#9c9999"
+            />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
