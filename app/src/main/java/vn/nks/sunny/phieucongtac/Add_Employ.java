@@ -15,7 +15,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import adapter.MyDatabaseAdapter;
+ 
 import model.Command;
+ 
 
 public class Add_Employ extends AppCompatActivity {
     Button btnadd;
@@ -46,12 +48,17 @@ public class Add_Employ extends AppCompatActivity {
 
 
 
+ 
                 final ArrayList<String> listEm=new ArrayList<>();
+ 
+                ArrayList<String> listEm=new ArrayList<>();
+ 
                 ArrayList<String> listPos=new ArrayList<>();
 
                 listPos.add("Vai trò");              listPos.add("Trưởng nhóm");         listPos.add("Thành viên");
                 listEm.add("Chọn nhân viên");
 
+ 
                 Cursor cursor = database.rawQuery("SELECT * FROM user", null);
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast())
@@ -61,6 +68,7 @@ public class Add_Employ extends AppCompatActivity {
                 }
 
 
+ 
                 ArrayAdapter<String> adapterEm=new ArrayAdapter<String>(Add_Employ.this, android.R.layout.simple_spinner_item,listEm);
                 adapterEm.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
@@ -82,14 +90,31 @@ public class Add_Employ extends AppCompatActivity {
                             Toast.makeText(Add_Employ.this, "Chưa chọn nhân viên hoặc vai trò", Toast.LENGTH_LONG).show();
                         else
                         {
+ 
                             listEmploy.add(employ.getSelectedItem()+" - "+pos.getSelectedItem());
                             arrayAdapter.notifyDataSetChanged();
+
+ 
+ 
                             dialog.dismiss();
                         }
                     }
                 });
 
 
+ 
+ 
+//                Cursor cursor=database.rawQuery("select * from user",null);
+//                cursor.moveToFirst();
+//                while (!cursor.isAfterLast())
+//                {
+//                    listEm.add(cursor.getString(1));
+//                    cursor.moveToNext();
+//                }cursor.close();
+
+
+
+ 
                 dialog.show();
 
 
@@ -107,6 +132,7 @@ public class Add_Employ extends AppCompatActivity {
         arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listEmploy);
         listView=findViewById(R.id.list_employ);
         listView.setAdapter(arrayAdapter);
+ 
 
         findViewById(R.id.btn_finish).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,5 +140,6 @@ public class Add_Employ extends AppCompatActivity {
                 finish();
             }
         });
+ 
     }
 }
