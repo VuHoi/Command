@@ -29,6 +29,24 @@ public class WorkActivity extends AppCompatActivity {
     List<Command> commands;
     CommandAdapter  adapter;
     Boolean permistion=false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        commands.clear();
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM PHIEUCONGTAC ORDER BY POS AND STATUS='APPROVAL | PENDING'", null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Command command = new Command(cursor.getString(0), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(6), cursor.getString(15));
+                commands.add(command);
+                cursor.moveToNext();
+            }
+        }catch (Exception e){}
+        adapter.notifyDataSetChanged();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +75,6 @@ public class WorkActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Cursor cursor = database.rawQuery("SELECT * FROM PHIEUCONGTAC ORDER BY POS AND STATUS='APPROVAL | PENDING'", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast())
-        {
-         Command  command=new Command(cursor.getString(0),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(6),cursor.getString(15));
-         commands.add(command);
-            cursor.moveToNext();
-        }
-adapter.notifyDataSetChanged();
 
 
         lsvcongtac.setOnItemClickListener(new AdapterView.OnItemClickListener() {
