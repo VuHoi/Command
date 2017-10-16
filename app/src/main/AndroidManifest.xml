@@ -16,10 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+ 
         <activity android:name=".AddCommand" />
         <activity android:name=".Add_Employ" />
         <activity android:name=".WorkActivity"></activity>
-        <activity android:name=".MainActivity" />
+       <activity android:name=".MainActivity" />
+ 
+     
+ 
+       
+     
+       
+ 
+     
+    
+ 
+ 
     </application>
 
 </manifest>
