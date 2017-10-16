@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -34,8 +36,9 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
     SQLiteDatabase database;
     AutoCompleteTextView txtchihuy, txtgiamsat ;
     int mYear,mMonth,mDay,fyear,fmonth,fday, hour,minute,fhour,fminute;
-    EditText edtnoicongtac,  edtnoidung, edtdonvi, edtdieukien,edtphuongtien, edtdungcu,txtgichu,txtpos,txtstatus ,edtcurrent ,edtsophieu;
+    EditText edtnoicongtac,  edtnoidung, edtdonvi, edtdieukien, edtdungcu,txtgichu,txtpos ,edtcurrent ,edtsophieu;
     TextView txttungay,txtdenngay,txtracong,txtch,txtgs,txtct ,txtnd,txtdv,txtdk;
+    Spinner edtphuongtien,txtstatus;
     List<User> users;
     Button btnaddmember;
     @Override
@@ -77,7 +80,39 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
         database = myDatabase.getMyDatabase();
         users=new ArrayList<>();
     }
+
+    List<String>phuongtiens;
+    List<String>Status;
     private void AddEvent() {
+        Status=new ArrayList<>();
+        phuongtiens=new ArrayList<>();
+        try {
+            Cursor cursor3 = database.rawQuery("select  title,SoXe  from PhuongTien  ", null);
+            cursor3.moveToFirst();
+            while (!cursor3.isAfterLast()) {
+
+                phuongtiens.add(cursor3.getString(1));
+                cursor3.moveToNext();
+            }
+        }catch (Exception e){}
+        Status.add("Status");
+            Status.add("APPROVAL");
+            Status.add("PENDING");
+
+phuongtiens.add(0,"Phương tiện");
+        ArrayAdapter<String> adapterPos=new ArrayAdapter<String>(AddCommand.this, android.R.layout.simple_spinner_item,phuongtiens);
+        adapterPos.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+
+
+
+        edtphuongtien.setAdapter(adapterPos);
+        edtphuongtien.setSelection(0);
+        ArrayAdapter<String> adapterPos1=new ArrayAdapter<String>(AddCommand.this, android.R.layout.simple_spinner_item,Status);
+        adapterPos1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+
+
+        txtstatus.setSelection(0);
+        txtstatus.setAdapter(adapterPos1);
         btnaddmember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -252,17 +287,16 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
                 datePickerDialog.show();
             }
         });
+try {
+    Cursor cursor = database.rawQuery("select  * from User", null);
+    cursor.moveToFirst();
 
-        Cursor cursor = database.rawQuery("select  * from User", null);
-        cursor.moveToFirst();
-
-        while (!cursor.isAfterLast())
-        {
-            Log.d("aaa",cursor.getString(1));
-            users.add(new User(cursor.getString(1).toString(),cursor.getString(3).toString(),cursor.getString(4).toString()));
-            cursor.moveToNext();
-        }
-
+    while (!cursor.isAfterLast()) {
+        Log.d("aaa", cursor.getString(1));
+        users.add(new User(cursor.getString(1).toString(), cursor.getString(3).toString(), cursor.getString(4).toString()));
+        cursor.moveToNext();
+    }
+}catch (Exception e){}
         UserAdapter adapter=new UserAdapter(this,R.layout.item_user,users);
         txtchihuy.setAdapter(adapter);
 
@@ -312,33 +346,38 @@ public class AddCommand extends AppCompatActivity implements DatePickerDialog.On
 
 
             values.put("SoPhieu ", edtsophieu.getText().toString());
-            Cursor cursor = database.rawQuery("select  id from User where Username =?", new String[]{txtchihuy.getText().toString()});
-            cursor.moveToFirst();
-            Calendar calendar=Calendar.getInstance();
-            values.put("Ngay",calendar.get(Calendar.YEAR)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.DATE));
-            values.put("ChiHuyTrucTiep ", Integer.parseInt(cursor.getString(0)));
+            try {
+                Cursor cursor = database.rawQuery("select  id from User where Username =?", new String[]{txtchihuy.getText().toString()});
+                cursor.moveToFirst();
+                Calendar calendar = Calendar.getInstance();
+                values.put("Ngay", calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.DATE));
+                values.put("ChiHuyTrucTiep ", Integer.parseInt(cursor.getString(0)));
 
-            Cursor cursor1 = database.rawQuery("select  id from User  where Username =?", new String[]{txtgiamsat.getText().toString()});
-            cursor1.moveToFirst();
-            values.put("GiamSatAnToan ", Integer.parseInt(cursor1.getString(0)));
-            values.put("NoiCongTac", edtnoicongtac.getText().toString());
-            values.put("NoiDungCongTac ", edtnoidung.getText().toString());
-            values.put("DonViYeuCau", edtdonvi.getText().toString());
-            values.put("DieuKien", edtdieukien.getText().toString());
-            values.put("NgayBatDau", txttungay.getText().toString());
-            values.put("NgayKetThuc", txtdenngay.getText().toString());
-            values.put("DungCu", edtdungcu.getText().toString());
-            Cursor cursor2 = database.rawQuery("select  id from PhuongTien  where Title =?", new String[]{edtphuongtien.getText().toString()});
-cursor2.moveToFirst();
+                Cursor cursor1 = database.rawQuery("select  id from User  where Username =?", new String[]{txtgiamsat.getText().toString()});
+                cursor1.moveToFirst();
+                values.put("GiamSatAnToan ", Integer.parseInt(cursor1.getString(0)));
+                values.put("NoiCongTac", edtnoicongtac.getText().toString());
+                values.put("NoiDungCongTac ", edtnoidung.getText().toString());
+                values.put("DonViYeuCau", edtdonvi.getText().toString());
+                values.put("DieuKien", edtdieukien.getText().toString());
+                values.put("NgayBatDau", txttungay.getText().toString());
+                values.put("NgayKetThuc", txtdenngay.getText().toString());
+                values.put("DungCu", edtdungcu.getText().toString());
+                Cursor cursor2 = database.rawQuery("select  id from PhuongTien  where SoXe  =?", new String[]{edtphuongtien.getSelectedItem().toString()});
+                cursor2.moveToFirst();
 
-            values.put("PhuongTienId ", cursor2.getString(0));
-            values.put("GhiChu", txtgichu.getText().toString());
-            values.put("pos", txtpos.getText().toString());
-            values.put("status", txtstatus.getText().toString());
-            values.put("RaCong", txtracong.getText().toString());
+                values.put("PhuongTienId ", cursor2.getString(0));
+                values.put("GhiChu", txtgichu.getText().toString());
+                values.put("pos", txtpos.getText().toString());
+                values.put("status", txtstatus.getSelectedItem().toString());
+                values.put("RaCong", txtracong.getText().toString());
 
 
-            database.insertWithOnConflict("PHIEUCONGTAC", null, values, SQLiteDatabase.CONFLICT_FAIL);
+                database.insertWithOnConflict("PHIEUCONGTAC", null, values, SQLiteDatabase.CONFLICT_FAIL);
+                Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){  Toast.makeText(this, "Thêm thất bại", Toast.LENGTH_SHORT).show();}
+
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
