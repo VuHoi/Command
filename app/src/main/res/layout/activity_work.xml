@@ -5,5 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vn.nks.sunny.phieucongtac.WorkActivity">
-
+<ListView
+    android:id="@+id/lsvcongtac"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/add"
+        android:layout_margin="20dp"
+        />
 </RelativeLayout>

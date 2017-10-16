@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCommand">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lệnh Công Tác"
+
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/txt1"
+            android:textColor="#030303"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtch"
+                android:text="*Chỉ huy*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AutoCompleteTextView
+                android:id="@+id/txtchihuy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:hint="Chỉ Huy"
+                android:textStyle="bold"
+                android:background="@null"
+                android:textSize="17dp"
+                android:completionThreshold="1"
+                android:textColorHint="#9c9999"
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtgs"
+                android:text="*Giám sát*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AutoCompleteTextView
+                android:id="@+id/txtgiamsat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:hint="Giám Sát"
+                android:textStyle="bold"
+
+                android:background="@null"
+                android:textSize="17dp"
+                android:completionThreshold="1"
+
+
+                android:textColorHint="#9c9999"
+
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtct"
+                android:text="*Nơi công tác*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edtnoicongtac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:hint="Nơi Công Tác"
+                android:textStyle="bold"
+
+                android:background="@null"
+                android:textSize="17dp"
+
+
+
+                android:textColorHint="#9c9999"
+
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtnd"
+                android:text="*Nội dung công tác*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edtnoidung"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:hint="Nội Dung Công Tác"
+                android:textStyle="bold"
+
+                android:background="@null"
+
+
+
+                android:textColorHint="#9c9999"
+
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtdv"
+                android:text="*Nội dung công tác*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edtdonvi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:hint="Đơn Vị Yêu Cầu "
+                android:textStyle="bold"
+                android:background="@null"
+                android:textSize="17dp"
+                android:textColorHint="#9c9999"
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_textview"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtdk"
+                android:text="*Điều kiện an toàn*"
+                android:textStyle="italic"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edtdieukien"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Điều Kiện An Toàn"
+                android:textStyle="bold"
+
+                android:background="@null"
+                android:textSize="17dp"
+
+                android:textColorHint="#9c9999"
+
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Từ Ngày"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_textview"
+                android:textSize="17dp"
+                android:id="@+id/txttungay"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="#9c9999"
+                android:layout_marginTop="10dp"
+                android:textColor="#050505"
+                />
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Đến Ngày"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border_textview"
+                android:textSize="17dp"
+                android:id="@+id/txtdenngay"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:textColorHint="#9c9999"
+                android:layout_marginTop="10dp"
+                android:textColor="#050505"
+                />
+        </LinearLayout>
+        <EditText
+            android:id="@+id/edtdungcu"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Dụng cụ và thiết bị"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
+
+        <EditText
+            android:id="@+id/edtphuongtien"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Phương tiện di chuyển"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
+
+        <TextView
+            android:id="@+id/txtracong"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:hint="Giờ ra cổng"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/border_textview"
+            android:textSize="17dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="20dp"
+            android:textColorHint="#9c9999"
+            android:layout_marginTop="10dp"
+            android:textColor="#050505"
+            />
+    </LinearLayout>
+
+</ScrollView>
+
