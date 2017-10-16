@@ -37,7 +37,7 @@ public class MyDatabaseAdapter extends SQLiteOpenHelper {
 
     //Create a empty database on the system
     public void createDatabase() throws IOException {
-//       db_delete();
+//      db_delete();
 
         boolean dbExist = checkDataBase();
 

@@ -60,6 +60,11 @@ public class User {
         Unit = unit;
     }
 
+    public User(String userName, String password) {
+        UserName = userName;
+        Password = password;
+    }
+
     String UserName,Password,Level,Unit,Status ;
 
 }
