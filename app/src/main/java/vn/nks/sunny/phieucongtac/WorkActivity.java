@@ -32,6 +32,8 @@ public class WorkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_work);
         lsvcongtac=findViewById(R.id.lsvcongtac);
         setTitle("Phiếu công tác");
+
+        Toast.makeText(this, getIntent().getBooleanExtra("permission",false)+" ", Toast.LENGTH_SHORT).show();
         myDatabase = new MyDatabaseAdapter(this);
         myDatabase.Khoitai();
         database = myDatabase.getMyDatabase();
