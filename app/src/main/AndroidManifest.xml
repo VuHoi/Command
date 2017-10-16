@@ -17,8 +17,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+ 
+        <activity android:name=".WorkActivity" />
+        <activity android:name=".AddCommand"></activity>
+        <activity android:name=".Add_Employ"></activity>
+ 
         <activity android:name=".Add_Employ" />
         <activity android:name=".WorkActivity"></activity>
+ 
     </application>
 
 </manifest>
