@@ -46,8 +46,7 @@
         android:layout_marginTop="8dp"
  
         app:layout_constraintBottom_toTopOf="@+id/btn_finish"
- 
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+
  
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_add" />
@@ -55,8 +54,7 @@
     <Button
  
         android:id="@+id/btn_finish"
- 
-        android:id="@+id/button2"
+
  
         android:layout_width="0dp"
         android:layout_height="37dp"

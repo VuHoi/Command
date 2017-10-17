@@ -65,6 +65,32 @@ public class User {
         Password = password;
     }
 
-    String UserName,Password,Level,Unit,Status ;
+    public User(String userName, int id) {
+        UserName = userName;
+        Id = id;
+    }
 
+    public int getId() {
+
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    String UserName;
+    String Password;
+    String Level;
+    String Unit;
+    String Status;
+
+
+
+    int Id ;
+
+    @Override
+    public String toString() {
+        return getUserName();
+    }
 }
