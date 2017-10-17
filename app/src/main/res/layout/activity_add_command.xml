@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lệnh Công Tác"
+            android:text="Phiếu Công Tác"
 
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -199,7 +199,7 @@
                 android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <EditText
+            <Spinner
                 android:id="@+id/edtdonvi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
                 android:textStyle="bold"
                 android:background="@null"
                 android:textSize="17dp"
-                android:textColorHint="#9c9999"
+
                 android:textColor="#050505"
                 />
         </LinearLayout>
@@ -302,11 +302,11 @@
             android:textColor="#050505"
             />
 
-        <EditText
+        <Spinner
             android:id="@+id/edtphuongtien"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Phương tiện di chuyển"
+
             android:textStyle="bold"
             android:layout_marginLeft="20dp"
             android:background="@drawable/border_textview"
@@ -352,11 +352,11 @@
             android:layout_marginTop="10dp"
             android:textColor="#050505"
             />
-        <EditText
+        <Spinner
             android:id="@+id/txtstatus"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Trạng thái"
+
             android:textStyle="bold"
             android:layout_marginLeft="20dp"
             android:background="@drawable/border_textview"

@@ -56,8 +56,15 @@ public class Add_Employ extends AppCompatActivity {
 
 
  
+ 
                 final ArrayList<User> listEm=new ArrayList<>();
 
+ 
+              
+ 
+
+ 
+ 
                 ArrayList<String> listPos=new ArrayList<>();
 
                 Boolean flag1=true;
