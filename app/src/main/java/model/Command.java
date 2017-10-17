@@ -1,10 +1,12 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Created by Hoi on 10/16/2017.
  */
 
-public class Command {
+public class Command implements Serializable {
     public Command(String soPhieu, String ngay, String chiHuyTrucTiep, String giamSatAnToan, String noiCongTac, String noiDungCongTac, String donViYeuCau, String dieuKien, String ngayBatDau, String ngayKetThuc, String dungCu, String phuongTienId, String raCong, String ghiChu, String pos, String status) {
         SoPhieu = soPhieu;
         Ngay = ngay;
@@ -154,13 +156,14 @@ public class Command {
 
     String SoPhieu;
 
-    public Command(String soPhieu, String chiHuyTrucTiep, String giamSatAnToan, String noiCongTac,String donViYeuCau,String status) {
+    public Command(String soPhieu, String chiHuyTrucTiep, String giamSatAnToan, String noiCongTac,String donViYeuCau,String status,int check) {
         SoPhieu = soPhieu;
         ChiHuyTrucTiep = chiHuyTrucTiep;
         GiamSatAnToan = giamSatAnToan;
         NoiCongTac = noiCongTac;
         DonViYeuCau=donViYeuCau;
         this.status=status;
+        Check=check;
     }
 
     String Ngay;
@@ -176,7 +179,17 @@ public class Command {
     String PhuongTienId;
     String RaCong;
     String GhiChu;
+
+    public int getCheck() {
+        return Check;
+    }
+
+    public void setCheck(int check) {
+        Check = check;
+    }
+
     String pos;
     String status;
+    int Check;
 
 }
