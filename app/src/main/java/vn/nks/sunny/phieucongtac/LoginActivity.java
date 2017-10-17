@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText id,pass;
     MyDatabaseAdapter myDatabase;
-    SQLiteDatabase database;
+    public static SQLiteDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

@@ -182,9 +182,11 @@ while (!cursor4.isAfterLast())
         btnaddmember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AddCommand.this,Add_Employ.class);
-                intent.putExtra("sophieu",edtsophieu.getText().toString());
-                startActivity(intent);
+                if(!edtsophieu.getText().toString().equals("")) {
+                    Intent intent = new Intent(AddCommand.this, Add_Employ.class);
+                    intent.putExtra("sophieu", edtsophieu.getText().toString());
+                    startActivity(intent);
+                } else Toast.makeText(AddCommand.this,"Nhập số phiếu trước",Toast.LENGTH_LONG).show();
             }
         });
 
