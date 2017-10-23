@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,23 +55,16 @@ public class Add_Employ extends AppCompatActivity {
                 final Spinner pos=dialog.findViewById(R.id.spn_pos);
 
 
-
- 
- 
                 final ArrayList<User> listEm=new ArrayList<>();
-
- 
-              
- 
-
- 
- 
                 ArrayList<String> listPos=new ArrayList<>();
 
+
+
+
                 Boolean flag1=true;
-                for(Command_Detail_Employ command_detail_employ:listEmploy )
+                for(Command_Detail_Employ command_detail_employ1:listEmploy )
                 {
-                    if(command_detail_employ.getVaitro().toString().equals("Trưởng nhóm"));
+                    if(command_detail_employ1.getVaitro().toString().equals("Trưởng nhóm"))
                     {
                         flag1=false;
                         break;
@@ -102,7 +96,7 @@ public class Add_Employ extends AppCompatActivity {
                 }
 
 
- 
+
                 ArrayAdapter<User> adapterEm=new ArrayAdapter<>(Add_Employ.this, android.R.layout.simple_spinner_item,listEm);
                 adapterEm.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
@@ -112,8 +106,8 @@ public class Add_Employ extends AppCompatActivity {
 
 
 
-               employ.setAdapter(adapterEm);
-               pos.setAdapter(adapterPos);
+                employ.setAdapter(adapterEm);
+                pos.setAdapter(adapterPos);
 
 
                 Button btn_add_employ=dialog.findViewById(R.id.btn_add_employ);
@@ -128,6 +122,7 @@ public class Add_Employ extends AppCompatActivity {
                             int posi=employ.getSelectedItemPosition();
                             listEmploy.add(new Command_Detail_Employ(null,listEm.get(posi).getId(),pos.getSelectedItem().toString(),0,null));
                             arrayAdapter.notifyDataSetChanged();
+                            Toast.makeText(Add_Employ.this,pos.getSelectedItem().toString() , Toast.LENGTH_LONG).show();
                             dialog.dismiss();
                         }
                     }
@@ -153,12 +148,12 @@ public class Add_Employ extends AppCompatActivity {
 
 
 
-        Cursor cursor=database.rawQuery("select * from phieuchitiet",null);
+        Cursor cursor=database.rawQuery("select * from phieuchitiet where sophieu='"+sophieu+"'",null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast())
         {
-           listEmploy.add(new Command_Detail_Employ(cursor.getString(1),cursor.getInt(2),cursor.getString(3)));
-           cursor.moveToNext();
+            listEmploy.add(new Command_Detail_Employ(cursor.getString(1),cursor.getInt(2),cursor.getString(3)));
+            cursor.moveToNext();
         }cursor.close();
 
         database.delete("phieuchitiet","sophieu=?",new String[]{sophieu});
@@ -167,7 +162,6 @@ public class Add_Employ extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 for(Command_Detail_Employ command_detail_employ:listEmploy) {
-
 
                     ContentValues values = new ContentValues();
                     values.put("sophieu", sophieu);

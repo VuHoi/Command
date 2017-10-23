@@ -115,7 +115,7 @@ phuongtiens.add(0,"Phương tiện");
         adapterPos1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
 
-        txtstatus.setSelection(0);
+        txtstatus.setSelection(1);
         txtstatus.setAdapter(adapterPos1);
  Units=new ArrayList<>();
         Cursor cursor4 = database.rawQuery("select  title  from DonVi  ", null);
@@ -183,6 +183,7 @@ while (!cursor4.isAfterLast())
             @Override
             public void onClick(View view) {
                 if(!edtsophieu.getText().toString().equals("")) {
+                    edtsophieu.setEnabled(false);
                     Intent intent = new Intent(AddCommand.this, Add_Employ.class);
                     intent.putExtra("sophieu", edtsophieu.getText().toString());
                     startActivity(intent);
@@ -458,9 +459,23 @@ try {
                     database.insertWithOnConflict("PHIEUCONGTAC", null, values, SQLiteDatabase.CONFLICT_FAIL);
                     Toast.makeText(AddCommand.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 }
-            }catch (Exception e){  Toast.makeText(this, "Thao tác thất bại", Toast.LENGTH_SHORT).show();}
+                finish();
+            }catch (Exception e){
 
-            finish();
+                if(txtchihuy.getText().toString().equals(""))
+                {
+                    txtchihuy.setError("Tên không đúng");
+                }
+                if(txtgiamsat.getText().toString().equals(""))
+                {
+                    txtgiamsat.setError("Tên không đúng");
+                }
+
+
+                Toast.makeText(this, "Thao tác thất bại", Toast.LENGTH_SHORT).show();
+            }
+
+
         }
         return super.onOptionsItemSelected(item);
     }
