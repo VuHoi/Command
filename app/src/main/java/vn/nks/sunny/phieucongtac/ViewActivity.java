@@ -58,26 +58,31 @@ public class ViewActivity extends AppCompatActivity {
             txtgc.setText(cursor.getString(14));
             txttt.setText(cursor.getString(15));
         }catch (Exception e){}
-        Cursor cursor = database.rawQuery("select  * from PHIEUCHITIET where sophieu=? ", new String[]{commandRequest.getSoPhieu()});
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast())
-        {
-            Cursor cursor1 = database.rawQuery("select  * from User where id=? ", new String[]{cursor.getString(2).toString()});
+        try {
+            Cursor cursor = database.rawQuery("select  * from PHIEUCHITIET where sophieu=? ", new String[]{commandRequest.getSoPhieu()});
             cursor.moveToFirst();
-            final View item = LayoutInflater.from(ViewActivity.this).inflate(R.layout.itemmember, null);
-            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            item.setLayoutParams(param);
-            TextView txtname=item.findViewById(R.id.txtname);
-            TextView txtlevel=item.findViewById(R.id.txtlevel);
-            TextView txtUnit=item.findViewById(R.id.txtUnit);
-            txtname.setText(cursor1.getString(1));
-            txtlevel.setText(cursor1.getString(3));
-            txtUnit.setText(cursor1.getString(4));
+            Toast.makeText(this, cursor.getString(0) + "", Toast.LENGTH_SHORT).show();
+            while (!cursor.isAfterLast()) {
 
-            lncontainer.addView(item);
-cursor.moveToNext();
-        }
+                Cursor cursor1 = database.rawQuery("select  * from User where id=? ", new String[]{cursor.getString(2).toString()});
+                cursor1.moveToFirst();
+                final View item = LayoutInflater.from(ViewActivity.this).inflate(R.layout.itemmember, null);
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                item.setLayoutParams(param);
+                TextView txtname = item.findViewById(R.id.txtname);
+                TextView txtlevel = item.findViewById(R.id.txtlevel);
+                TextView txtUnit = item.findViewById(R.id.txtUnit);
+                txtname.setText(cursor1.getString(1));
+                txtlevel.setText(cursor1.getString(3));
 
+                Cursor cursor2 = database.rawQuery("select  title from Donvi where id=? ", new String[]{cursor1.getString(4).toString()});
+                cursor2.moveToFirst();
+                txtUnit.setText(cursor2.getString(0));
+
+                lncontainer.addView(item);
+                cursor.moveToNext();
+            }
+        }catch (Exception e){}
 
     }
 

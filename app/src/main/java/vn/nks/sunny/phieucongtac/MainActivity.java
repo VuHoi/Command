@@ -16,7 +16,7 @@ ImageView imglogo;
         setContentView(R.layout.activity_main);
 
         imglogo=findViewById(R.id.imglogo);
-        TranslateAnimation anim = new TranslateAnimation( 0, 0 ,450 , 0 );
+        TranslateAnimation anim = new TranslateAnimation( 0, 0 ,700 , 0 );
         anim.setDuration(3000);
         anim.setFillAfter( true );
         imglogo.startAnimation(anim);
